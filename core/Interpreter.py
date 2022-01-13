@@ -10,6 +10,9 @@ class Interpreter(object):
 
     def _normal_cmd(self, command:str) -> None:
         """Execute normal commands that doesn't branch / loop"""
+        if command.isspace():
+            self.index += 1
+            return
         try:
             self.environment.parse_command(command)
         except ValueError as exp:
